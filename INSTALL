@@ -1,0 +1,9 @@
+Building UniversityCoin
+
+See doc/readme-qt.rst for instructions on building UniversityCoin QT,
+the intended-for-end-users, nice-graphical-interface, reference
+implementation of UniversityCoin.
+
+See doc/build-*.txt for instructions on building UniversityCoind,
+the intended-for-services, no-graphical-interface, reference
+implementation of UniversityCoin.

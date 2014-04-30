@@ -1,0 +1,2 @@
+
+UniversityCoin - UVC
