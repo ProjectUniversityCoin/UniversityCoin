@@ -1,3 +1,4 @@
+//Copyright 2014 UniversityCoin Developers
 #include "overviewpage.h"
 #include "ui_overviewpage.h"
 
@@ -136,11 +137,11 @@ void OverviewPage::setBalance(qint64 balance, qint64 stake, qint64 unconfirmedBa
     currentStake = stake;
     currentUnconfirmedBalance = unconfirmedBalance;
     currentImmatureBalance = immatureBalance;
-    ui->labelBalance->setText(BitcoinUnits::formatWithUnit(unit, balance));
-    ui->labelStake->setText(BitcoinUnits::formatWithUnit(unit, stake));
+    ui->labelBalance->setText("<b>" + BitcoinUnits::formatWithUnit(unit, balance) + "</b>");
+    ui->labelStake->setText("<b>" + BitcoinUnits::formatWithUnit(unit, stake) + "</b>");
     ui->labelUnconfirmed->setText(BitcoinUnits::formatWithUnit(unit, unconfirmedBalance));
     ui->labelImmature->setText(BitcoinUnits::formatWithUnit(unit, immatureBalance));
-
+    ui->labelTotal->setText("<b>" + BitcoinUnits::formatWithUnit(unit,balance+stake+unconfirmedBalance+immatureBalance) + "</b>");
     // only show immature (newly mined) balance if it's non-zero, so as not to complicate things
     // for the non-mining users
     bool showImmature = immatureBalance != 0;

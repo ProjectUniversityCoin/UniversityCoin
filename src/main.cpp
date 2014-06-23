@@ -981,13 +981,16 @@ int64 GetProofOfWorkReward(int nHeight, int64 nFees, uint256 prevHash)
     return nSubsidy + nFees;
 }
 
+//static const int64 MAX_MINT_PROOF_OF_STAKE = 0.038 * COIN;	// 3.8% annual interest
+//static const int64 MAX_MINT_PROOF_OF_STAKE2 = 0.085 * COIN;	// 8.5% annual interest
+//
 // miner's coin stake reward based on nBits and coin age spent (coin-days)
 // simple algorithm, not depend on the diff
 // const int YEARLY_BLOCKCOUNT = 1051200;	// 365 * 2880 
 int64 GetProofOfStakeReward(int64 nCoinAge, unsigned int nBits, unsigned int nTime, int nHeight)
 {
     int64 nRewardCoinYear;
-	nRewardCoinYear = MAX_MINT_PROOF_OF_STAKE2;
+    nRewardCoinYear = MAX_MINT_PROOF_OF_STAKE2;   // should have been MAX_MINT_PROOF_OF_STAKE  (baw june 10 2014)
 
 	if(nHeight > 80640 && nHeight < 357120)
 		nRewardCoinYear = MAX_MINT_PROOF_OF_STAKE2;
