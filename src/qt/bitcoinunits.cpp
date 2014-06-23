@@ -1,5 +1,6 @@
+//Copyright 2014 UniversityCoin Developers
 #include "bitcoinunits.h"
-
+#include <stdio.h>
 #include <QStringList>
 
 BitcoinUnits::BitcoinUnits(QObject *parent):
@@ -109,7 +110,26 @@ QString BitcoinUnits::format(int unit, qint64 n, bool fPlus)
         quotient_str.insert(0, '-');
     else if (fPlus && n > 0)
         quotient_str.insert(0, '+');
-    return quotient_str + QString(".") + remainder_str;
+    
+    // BAW JUNE 18, 2014 actually we do like the commas
+    int nStop = 0;
+    if (n < 0)
+        nStop = 1;
+    else if (fPlus && n > 0)
+        nStop = 1;
+    
+    QString quotient_str2 = "";
+	int i2 = 0;
+    for(int i = quotient_str.size() - 1; i >= nStop; i--)
+    {
+    	i2++;
+        if(i2 % 3 == 1 && i2 > 3 )
+            quotient_str2.insert(0, ',');
+        quotient_str2.insert(0, quotient_str.at(i));
+    }
+    // BAW end
+    
+    return quotient_str2 + QString(".") + remainder_str;
 }
 
 QString BitcoinUnits::formatWithUnit(int unit, qint64 amount, bool plussign)
